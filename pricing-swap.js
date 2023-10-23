@@ -18,10 +18,9 @@ const pricing = {
 const billingDetails = {
   monthly: "Billed monthly • Cancel anytime",
   annually: {
-    "Sole Proprietor": "Billed $2,028 annually • Annual commitment",
-    "S Corporation": "Billed $3,060 annually • Annual commitment",
-    "Sole Proprietor or S Corporation":
-      "Billed $3,060 annually • Annual commitment",
+    "Sole Proprietor": "Billed $2,028 annually",
+    "S Corporation": "Billed $3,060 annually",
+    "Sole Proprietor or S Corporation": "Billed $3,060 annually",
   },
 };
 
