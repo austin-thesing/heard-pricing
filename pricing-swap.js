@@ -32,7 +32,7 @@ function updatePricing(card) {
   // Update to monthly
   pricePerMonth.textContent = pricing[cardType].monthly;
   billingCycleLabel.textContent = "Monthly Plan";
-  planTermDetails.textContent = billingDetails.monthly[cardType];
+  planTermDetails.textContent = billingDetails.monthly;
 }
 
 // Update pricing on page load
