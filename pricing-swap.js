@@ -29,10 +29,10 @@ function updatePricing(card) {
     return;
   }
 
-  // Update to annually
-  pricePerMonth.textContent = pricing[cardType].annually;
-  billingCycleLabel.textContent = "Annual Plan";
-  planTermDetails.textContent = billingDetails.annually[cardType];
+  // Update to monthly
+  pricePerMonth.textContent = pricing[cardType].monthly;
+  billingCycleLabel.textContent = "Monthly Plan";
+  planTermDetails.textContent = billingDetails.monthly[cardType];
 }
 
 // Update pricing on page load
