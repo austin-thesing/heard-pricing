@@ -11,8 +11,13 @@
 
 <script>
   $(".pricing-switcher-link").click(function (t) {
-    t.preventDefault(), $(".pricing-switcher-link").removeClass("pricing-switcher-link-active"), $(".w-tab-link:contains(" + t.target.innerText + ")").click(), $(t.target).addClass("pricing-switcher-link-active");
-  })(() => {
+    t.preventDefault();
+    $(".pricing-switcher-link").removeClass("pricing-switcher-link-active");
+    $(".w-tab-link:contains(" + t.target.innerText + ")").click();
+    $(t.target).addClass("pricing-switcher-link-active");
+  });
+
+  (() => {
     function t(t) {
       return t[0].toUpperCase() + t.slice(1);
     }
