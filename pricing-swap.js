@@ -23,7 +23,7 @@ function updatePricing(card) {
   }
 
   // Get the plan term details element
-  const planTermDetails = card.querySelector(".plan-term-details");
+  const planTermDetails = card.querySelector(".plan-pricing-wrap .plan-term-details");
   if (!planTermDetails) {
     console.log("Plan term details element not found");
     return;
@@ -82,7 +82,7 @@ toggles.forEach((toggle, index) => {
     }
 
     // Get the plan term details element
-    const planTermDetails = card.querySelector(".plan-term-details");
+    const planTermDetails = card.querySelector(".plan-pricing-wrap .plan-term-details");
     if (!planTermDetails) {
       console.log("Plan term details element not found");
       return;
