@@ -1,7 +1,7 @@
 // Function to update pricing
 function updatePricing(card) {
   // Get the card type
-  const cardTypeElement = card.querySelector(".n-pricing-plan-type div");
+  const cardTypeElement = card.querySelector(".n-pricing-plan-type");
   if (!cardTypeElement) {
     console.log("Card type element not found");
     return;
