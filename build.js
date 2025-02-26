@@ -37,7 +37,9 @@ async function runBuild() {
       const minifiedSize = fs.statSync(path.join("dist", file)).size;
       const reduction = ((1 - minifiedSize / originalSize) * 100).toFixed(2);
 
-      console.log(`${file}: ${formatBytes(originalSize)} → ${formatBytes(minifiedSize)} (${reduction}% reduction)`);
+      console.log(
+        `${file}: ${formatBytes(originalSize)} → ${formatBytes(minifiedSize)} (${reduction}% reduction)`
+      );
     });
   } catch (error) {
     console.error("❌ Build failed:", error);
