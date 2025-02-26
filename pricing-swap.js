@@ -82,10 +82,58 @@ function updateAllPricingCards(isAnnual) {
     const planTermDetails = card.querySelector(".plan-pricing-wrap .plan-term-details");
     const toggle = card.querySelector(".pricing-chart_toggle-container");
 
-    if (isAnnual) {
+    if (isMonthly) {
+      pricePerMonth.textContent = pricing[cardType].monthly;
+      billingCycleLabel.textContent = "Monthly Plan";
+      planTermDetails.textContent = billingDetails.monthly;
+      toggle.classList.add("is-active");
+
+      // Update save percent element to gray
+      const savePercent = card.querySelector(".save-x-percent");
+      if (savePercent) {
+        savePercent.style.color = "#aaa";
+      }
+
+      // // Update compare-at price for monthly
+      // const compareAtPrice = card.querySelector(".compare-at-price");
+      // if (compareAtPrice && pricing[cardType].compare_monthly) {
+      //   compareAtPrice.textContent = pricing[cardType].compare_monthly;
+      // }
+
+      // Show monthly bottom price details and hide annual
+      const monthlyDetails = card.querySelector('.bottom-price-details[plan-type="monthly"]');
+      const annualDetails = card.querySelector('.bottom-price-details[plan-type="annual"]');
+      if (monthlyDetails) monthlyDetails.style.display = "block";
+      if (annualDetails) annualDetails.style.display = "none";
+    } else {
       pricePerMonth.textContent = pricing[cardType].annually;
       billingCycleLabel.textContent = "Annual Plan";
       planTermDetails.textContent = billingDetails.annually[cardType];
+      toggle.classList.remove("is-active");
+
+      // Update save percent element to default green
+      const savePercent = card.querySelector(".save-x-percent");
+      if (savePercent) {
+        savePercent.style.color = "";
+      }
+
+      // // Update compare-at price for annual
+      // const compareAtPrice = card.querySelector(".compare-at-price");
+      // if (compareAtPrice && pricing[cardType].compare_annual) {
+      //   compareAtPrice.textContent = pricing[cardType].compare_annual;
+      // }
+
+      // Show annual bottom price details and hide monthly
+      const monthlyDetails = card.querySelector('.bottom-price-details[plan-type="monthly"]');
+      const annualDetails = card.querySelector('.bottom-price-details[plan-type="annual"]');
+      if (monthlyDetails) monthlyDetails.style.display = "none";
+      if (annualDetails) annualDetails.style.display = "block";
+    }
+  });
+
+  // Update all toggle states
+  toggles.forEach((toggle) => {
+    if (isMonthly) {
       toggle.classList.add("is-active");
     } else {
       pricePerMonth.textContent = pricing[cardType].monthly;
