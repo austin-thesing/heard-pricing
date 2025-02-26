@@ -43,11 +43,11 @@ function updatePricing(card) {
   billingCycleLabel.textContent = "Annual Plan";
   planTermDetails.textContent = billingDetails.annually[cardType];
 
-  // Update compare-at price if it exists
-  const compareAtPrice = card.querySelector(".compare-at-price");
-  if (compareAtPrice && pricing[cardType].compare_annual) {
-    compareAtPrice.textContent = pricing[cardType].compare_annual;
-  }
+  // Removed - Feb 26 2025 - Update compare-at price if it exists
+  // const compareAtPrice = card.querySelector(".compare-at-price");
+  // if (compareAtPrice && pricing[cardType].compare_annual) {
+  //   compareAtPrice.textContent = pricing[cardType].compare_annual;
+  // }
 
   // Set initial state for bottom price details
   const monthlyDetails = card.querySelector('.bottom-price-details[plan-type="monthly"]');
