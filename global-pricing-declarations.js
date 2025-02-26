@@ -6,9 +6,9 @@ const pricing = {
   },
   "S Corporation": {
     monthly: "199",
-    compare_monthly: "$299/mo",
+    // compare_monthly: "$299/mo",
     annually: "169",
-    compare_annual: "$255/mo",
+    // compare_annual: "$255/mo",
   },
   "Sole Proprietor or S Corporation": {
     monthly: "299",

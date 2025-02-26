@@ -9,15 +9,14 @@ if (!fs.existsSync("dist")) {
 }
 
 // Define the JS files to build
-const entryPoints = ["pricing-swap.js", "pricing-update.js"];
-
+const entryPoints = ["pricing-update.js"];
 
 // Build configuration
 const buildOptions = {
   entryPoints,
   bundle: true,
   minify: true,
-  sourcemap: true,
+  sourcemap: false,
   target: ["es2020"],
   outdir: "dist",
   format: "esm",
