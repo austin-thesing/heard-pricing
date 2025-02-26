@@ -19,6 +19,7 @@ class PricingManager {
     this.cards = document.querySelectorAll(".new-pricing-card");
     this.toggles = document.querySelectorAll(".pricing-chart_toggle-container");
     this.isMonthlyPricing = false;
+    this.isUpdating = false; // Flag to prevent infinite loops
 
     this.init();
   }
@@ -30,35 +31,66 @@ class PricingManager {
     // Add event listeners to toggles
     this.setupToggleListeners();
 
-    console.log("Pricing manager initialized with", this.cards.length, "pricing cards");
+    console.log(
+      "Pricing manager initialized with",
+      this.cards.length,
+      "pricing cards and",
+      this.toggles.length,
+      "toggles"
+    );
   }
 
   setupToggleListeners() {
     this.toggles.forEach((toggle) => {
       toggle.addEventListener("click", (event) => {
-        // Prevent default behavior to avoid any interference
-        event.preventDefault();
+        // Prevent handling if we're in the middle of an update
+        if (this.isUpdating) {
+          return;
+        }
+
+        console.log("Toggle clicked, current state:", this.isMonthlyPricing);
+
+        // Set the updating flag to prevent infinite loops
+        this.isUpdating = true;
 
         // Toggle the pricing state
         this.isMonthlyPricing = !this.isMonthlyPricing;
 
-        // Update all toggles to match the current state
-        this.syncAllToggles();
+        console.log("New state after toggle:", this.isMonthlyPricing);
+
+        // Trigger clicks on other toggles to ensure Webflow interactions work
+        this.triggerOtherToggles(toggle);
 
         // Update all pricing cards
         this.updateAllCards(this.isMonthlyPricing);
+
+        // Reset the updating flag after a short delay
+        setTimeout(() => {
+          this.isUpdating = false;
+        }, 100);
       });
     });
   }
 
-  syncAllToggles() {
+  triggerOtherToggles(sourceToggle) {
+    // Trigger actual clicks on other toggles to ensure Webflow interactions work
     this.toggles.forEach((toggle) => {
-      // Remove any existing classes first to ensure clean state
-      toggle.classList.remove("is-active");
+      // Skip the source toggle that was clicked
+      if (toggle === sourceToggle) return;
 
-      // Then add the class if needed based on current state
+      // Trigger a click on the other toggle
+      toggle.click();
+    });
+  }
+
+  syncAllToggles() {
+    // This method is now only used for initialization
+    // We don't manually update toggle classes anymore as we rely on Webflow's interactions
+    this.toggles.forEach((toggle) => {
       if (this.isMonthlyPricing) {
         toggle.classList.add("is-active");
+      } else {
+        toggle.classList.remove("is-active");
       }
     });
   }
@@ -100,7 +132,6 @@ class PricingManager {
       savePercent: card.querySelector(".save-x-percent"),
       monthlyDetails: card.querySelector('.bottom-price-details[plan-type="monthly"]'),
       annualDetails: card.querySelector('.bottom-price-details[plan-type="annual"]'),
-      // Removed toggle from elements as we handle it separately
     };
 
     // Check if required elements exist
@@ -129,8 +160,6 @@ class PricingManager {
     // Show monthly bottom price details and hide annual
     if (elements.monthlyDetails) elements.monthlyDetails.style.display = "block";
     if (elements.annualDetails) elements.annualDetails.style.display = "none";
-
-    // Removed toggle state update as it's handled by syncAllToggles
   }
 
   applyAnnualPricing(elements, cardType) {
@@ -146,8 +175,6 @@ class PricingManager {
     // Show annual bottom price details and hide monthly
     if (elements.monthlyDetails) elements.monthlyDetails.style.display = "none";
     if (elements.annualDetails) elements.annualDetails.style.display = "block";
-
-    // Removed toggle state update as it's handled by syncAllToggles
   }
 
   updateAllCards(isMonthly) {
