@@ -8,10 +8,11 @@
  * - Reduced code duplication
  * - Better performance with fewer DOM queries
  * - More maintainable structure with clear separation of concerns
+ * - Direct imports instead of relying on global variables
  */
 
-// Pricing configuration is expected to be defined in global-pricing-declarations.js
-// Make sure pricing and billingDetails objects are available before this script runs
+// Import pricing configuration directly
+import { pricing, billingDetails } from "./global-pricing-declarations.js";
 
 class PricingManager {
   constructor() {
@@ -157,12 +158,6 @@ class PricingManager {
 
 // Initialize the pricing manager when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
-  // Check if required global variables exist
-  if (typeof pricing === "undefined" || typeof billingDetails === "undefined") {
-    console.error("Pricing data not found. Make sure global-pricing-declarations.js is loaded before this script.");
-    return;
-  }
-
   // Initialize the pricing manager
   const pricingManager = new PricingManager();
 });

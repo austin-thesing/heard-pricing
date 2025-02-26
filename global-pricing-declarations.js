@@ -25,3 +25,6 @@ const billingDetails = {
     "Sole Proprietor or S Corporation": "Limited time offer.",
   },
 };
+
+// Export the pricing and billing details for importing in other files
+export { pricing, billingDetails };
