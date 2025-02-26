@@ -111,11 +111,11 @@ function updateAllPricingCards(isMonthly) {
         savePercent.style.color = "#aaa";
       }
 
-      // Update compare-at price for monthly
-      const compareAtPrice = card.querySelector(".compare-at-price");
-      if (compareAtPrice && pricing[cardType].compare_monthly) {
-        compareAtPrice.textContent = pricing[cardType].compare_monthly;
-      }
+      // // Update compare-at price for monthly
+      // const compareAtPrice = card.querySelector(".compare-at-price");
+      // if (compareAtPrice && pricing[cardType].compare_monthly) {
+      //   compareAtPrice.textContent = pricing[cardType].compare_monthly;
+      // }
 
       // Show monthly bottom price details and hide annual
       const monthlyDetails = card.querySelector('.bottom-price-details[plan-type="monthly"]');
@@ -134,11 +134,11 @@ function updateAllPricingCards(isMonthly) {
         savePercent.style.color = "";
       }
 
-      // Update compare-at price for annual
-      const compareAtPrice = card.querySelector(".compare-at-price");
-      if (compareAtPrice && pricing[cardType].compare_annual) {
-        compareAtPrice.textContent = pricing[cardType].compare_annual;
-      }
+      // // Update compare-at price for annual
+      // const compareAtPrice = card.querySelector(".compare-at-price");
+      // if (compareAtPrice && pricing[cardType].compare_annual) {
+      //   compareAtPrice.textContent = pricing[cardType].compare_annual;
+      // }
 
       // Show annual bottom price details and hide monthly
       const monthlyDetails = card.querySelector('.bottom-price-details[plan-type="monthly"]');
