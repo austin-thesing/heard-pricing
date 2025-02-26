@@ -35,7 +35,10 @@ class PricingManager {
 
   setupToggleListeners() {
     this.toggles.forEach((toggle) => {
-      toggle.addEventListener("click", () => {
+      toggle.addEventListener("click", (event) => {
+        // Prevent default behavior to avoid any interference
+        event.preventDefault();
+
         // Toggle the pricing state
         this.isMonthlyPricing = !this.isMonthlyPricing;
 
@@ -50,10 +53,12 @@ class PricingManager {
 
   syncAllToggles() {
     this.toggles.forEach((toggle) => {
+      // Remove any existing classes first to ensure clean state
+      toggle.classList.remove("is-active");
+
+      // Then add the class if needed based on current state
       if (this.isMonthlyPricing) {
         toggle.classList.add("is-active");
-      } else {
-        toggle.classList.remove("is-active");
       }
     });
   }
