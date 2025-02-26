@@ -5,9 +5,9 @@ const pricing = {
     annually: "169",
   },
   "S Corporation": {
-    monthly: "199",
+    monthly: "299",
     // compare_monthly: "$299/mo",
-    annually: "169",
+    annually: "255",
     // compare_annual: "$255/mo",
   },
   "Sole Proprietor or S Corporation": {
@@ -21,8 +21,8 @@ const billingDetails = {
   monthly: "Billed monthly • Cancel anytime",
   annually: {
     "Sole Proprietor": "Billed $2,028 annually",
-    "S Corporation": "Limited time offer.",
-    "Sole Proprietor or S Corporation": "Limited time offer.",
+    "S Corporation": "$3,060 Billed annually",
+    "Sole Proprietor or S Corporation": "$3,060 Billed annually",
   },
 };
 
