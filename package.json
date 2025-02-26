@@ -4,11 +4,14 @@
   "scripts": {
     "build": "bun build.js",
     "watch": "bun --watch build.js",
-    "serve": "bun --serve dist"
+    "serve": "bun --serve dist",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "esbuild": "^0.25.0"
+    "esbuild": "^0.25.0",
+    "prettier": "^3.1.0"
   },
   "peerDependencies": {
     "typescript": "^5"
