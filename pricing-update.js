@@ -95,7 +95,7 @@ class PricingManager {
       savePercent: card.querySelector(".save-x-percent"),
       monthlyDetails: card.querySelector('.bottom-price-details[plan-type="monthly"]'),
       annualDetails: card.querySelector('.bottom-price-details[plan-type="annual"]'),
-      toggle: card.querySelector(".pricing-chart_toggle-container"),
+      // Removed toggle from elements as we handle it separately
     };
 
     // Check if required elements exist
@@ -125,10 +125,7 @@ class PricingManager {
     if (elements.monthlyDetails) elements.monthlyDetails.style.display = "block";
     if (elements.annualDetails) elements.annualDetails.style.display = "none";
 
-    // Update toggle state
-    if (elements.toggle) {
-      elements.toggle.classList.add("is-active");
-    }
+    // Removed toggle state update as it's handled by syncAllToggles
   }
 
   applyAnnualPricing(elements, cardType) {
@@ -145,10 +142,7 @@ class PricingManager {
     if (elements.monthlyDetails) elements.monthlyDetails.style.display = "none";
     if (elements.annualDetails) elements.annualDetails.style.display = "block";
 
-    // Update toggle state
-    if (elements.toggle) {
-      elements.toggle.classList.remove("is-active");
-    }
+    // Removed toggle state update as it's handled by syncAllToggles
   }
 
   updateAllCards(isMonthly) {
