@@ -1,4 +1,3 @@
-// Function to update pricing
 function updatePricing(card) {
   // Get the card type
   const cardTypeElement = card.querySelector(".n-pricing-plan-type.new h3");
@@ -39,13 +38,31 @@ function updatePricing(card) {
     return;
   }
 
-  // Update to monthly
-  pricePerMonth.textContent = pricing[cardType].monthly;
-  billingCycleLabel.textContent = "Monthly Plan";
-  planTermDetails.textContent = billingDetails.monthly;
+  // Update to annual pricing by default (when toggle is OFF)
+  pricePerMonth.textContent = pricing[cardType].annually;
+  billingCycleLabel.textContent = "Annual Plan";
+  planTermDetails.textContent = billingDetails.annually[cardType];
 
-  // Update the toggle
-  const toggle = card.querySelector(".plan-toggle");
+  // Removed - Feb 26 2025 - Update compare-at price if it exists
+  // const compareAtPrice = card.querySelector(".compare-at-price");
+  // if (compareAtPrice && pricing[cardType].compare_annual) {
+  //   compareAtPrice.textContent = pricing[cardType].compare_annual;
+  // }
+
+  // Set initial state for bottom price details
+  const monthlyDetails = card.querySelector('.bottom-price-details[plan-type="monthly"]');
+  const annualDetails = card.querySelector('.bottom-price-details[plan-type="annual"]');
+  if (monthlyDetails) monthlyDetails.style.display = "none";
+  if (annualDetails) annualDetails.style.display = "block";
+
+  // Update save-x-percent element visibility
+  const savePercent = card.querySelector(".save-x-percent");
+  if (savePercent) {
+    savePercent.style.color = ""; // Default green color
+  }
+
+  // Update the toggle to show inactive state for annual
+  const toggle = card.querySelector(".pricing-chart_toggle-container");
   if (toggle) {
     toggle.classList.remove("is-active");
   }
@@ -58,7 +75,7 @@ document.querySelectorAll(".new-pricing-card").forEach(updatePricing);
 const toggles = document.querySelectorAll(".pricing-chart_toggle-container");
 
 // Function to update all pricing cards
-function updateAllPricingCards(isAnnual) {
+function updateAllPricingCards(isMonthly) {
   document.querySelectorAll(".new-pricing-card").forEach((card) => {
     const cardTypeElement = card.querySelector(".n-pricing-plan-type.new h3");
     if (!cardTypeElement) {
@@ -136,9 +153,6 @@ function updateAllPricingCards(isAnnual) {
     if (isMonthly) {
       toggle.classList.add("is-active");
     } else {
-      pricePerMonth.textContent = pricing[cardType].monthly;
-      billingCycleLabel.textContent = "Monthly Plan";
-      planTermDetails.textContent = billingDetails.monthly;
       toggle.classList.remove("is-active");
     }
   });
@@ -150,10 +164,10 @@ toggles.forEach((toggle) => {
     const isActive = this.classList.contains("is-active");
     const newState = !isActive;
 
-    // Update all toggles
+    // Update all toggles with actual clicks
     toggles.forEach((otherToggle) => {
       if (otherToggle !== this) {
-        // Simulate a click on other toggles
+        // Trigger actual click event on other toggles
         otherToggle.click();
       }
     });
@@ -163,5 +177,5 @@ toggles.forEach((toggle) => {
   });
 });
 
-// Update pricing on page load
+// Update pricing on page load to show annual pricing by default (toggle OFF)
 updateAllPricingCards(false);

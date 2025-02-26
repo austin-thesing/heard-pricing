@@ -11,6 +11,7 @@ if (!fs.existsSync("dist")) {
 // Define the JS files to build
 const entryPoints = ["pricing-swap.js", "pricing-update.js"];
 
+
 // Build configuration
 const buildOptions = {
   entryPoints,

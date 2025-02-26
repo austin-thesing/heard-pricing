@@ -1,0 +1,16 @@
+{
+  "name": "heard-pricing",
+  "private": true,
+  "scripts": {
+    "build": "bun build.js",
+    "watch": "bun --watch build.js",
+    "serve": "bun --serve dist"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "esbuild": "^0.25.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
