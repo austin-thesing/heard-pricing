@@ -1,7 +1,7 @@
 // Pricing information
 const pricing = {
   "Sole Proprietor": {
-    monthly: "169",
+    monthly: "199",
     annually: "169",
   },
   "S Corporation": {
