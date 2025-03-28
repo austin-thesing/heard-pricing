@@ -130,8 +130,8 @@ class PricingManager {
       billingCycleLabel: card.querySelector(".billing-cycle-label"),
       planTermDetails: card.querySelector(".plan-pricing-wrap .plan-term-details"),
       savePercent: card.querySelector(".save-x-percent"),
-      monthlyDetails: card.querySelector('.bottom-price-details[plan-type="monthly"]'),
-      annualDetails: card.querySelector('.bottom-price-details[plan-type="annual"]'),
+      // monthlyDetails: card.querySelector('.bottom-price-details[plan-type="monthly"]'),
+      // annualDetails: card.querySelector('.bottom-price-details[plan-type="annual"]'),
     };
 
     // Check if required elements exist
@@ -157,9 +157,9 @@ class PricingManager {
       elements.savePercent.style.color = "#aaa";
     }
 
-    // Show monthly bottom price details and hide annual
-    if (elements.monthlyDetails) elements.monthlyDetails.style.display = "block";
-    if (elements.annualDetails) elements.annualDetails.style.display = "none";
+    // Comment out showing/hiding monthly and annual details
+    // if (elements.monthlyDetails) elements.monthlyDetails.style.display = "block";
+    // if (elements.annualDetails) elements.annualDetails.style.display = "none";
   }
 
   applyAnnualPricing(elements, cardType) {
@@ -172,9 +172,9 @@ class PricingManager {
       elements.savePercent.style.color = "";
     }
 
-    // Show annual bottom price details and hide monthly
-    if (elements.monthlyDetails) elements.monthlyDetails.style.display = "none";
-    if (elements.annualDetails) elements.annualDetails.style.display = "block";
+    // Comment out showing/hiding monthly and annual details
+    // if (elements.monthlyDetails) elements.monthlyDetails.style.display = "none";
+    // if (elements.annualDetails) elements.annualDetails.style.display = "block";
   }
 
   updateAllCards(isMonthly) {
